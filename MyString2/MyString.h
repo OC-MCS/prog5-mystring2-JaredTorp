@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+
+using namespace std;
 
 class MyString
 {
@@ -17,4 +20,4 @@ public:
 
 };
 
-ostream &operator<<(ostream& , const MyString&);
+ostream& operator<<(ostream &strm, const MyString&obj);

@@ -5,6 +5,10 @@
 // Description: Mystring
 //=====================================================
 
+//comment the code
+//visit harbert tomorrow
+
+
 #include <iostream>
 #include "MyString.h"
 
@@ -13,15 +17,37 @@ using namespace std;
 
 MyString addfunc(MyString a, MyString b);
 bool isEqual(MyString a, MyString b);
+ostream& operator<<(ostream &strm, const MyString&obj);
 
 int main()
 {
 	//constructor testing
 	MyString s1;
+	cout << "after s1" << endl;
 	MyString s2("billy");
+	cout << "after s2" << endl;
 	MyString s3(s2);
+	cout << "after s3" << endl;
 	char a[] = "hello";
+	cout << "before s4" << endl;
 	MyString s4(a);
+	cout << "after s4" << endl;
+	MyString s5;
+	cout << "after s5" << endl;
+	
+	
+
+	s5 = addfunc(s1, s2);
+
+	cout << s5 << endl;
+
+	cout << "Testing a Mystring to equal itself and then cout-ing the result" << endl;
+	s2 = s2;
+
+	cout << s2 << endl;
+
+
+
 
 	//passing a string literal and assigning it to s1
 	s1 = "Joe"; 
@@ -42,6 +68,7 @@ int main()
 	
 	//assigning the values
 	s1 = s2 = s3;
+
 
 	//couting the values
 	cout << s1 << " " << s2 << " " << s3 << endl;
@@ -94,16 +121,18 @@ int main()
 //adding func
 MyString addfunc(MyString a, MyString b)
 {
+	cout << "Beginning of addfunc" << endl;
 	MyString temp;
 
 	temp = a + b;
+	cout << "Before return in addfunc" << endl;
 
 	return temp;
 
 }
 
 
-//bool true func
+
 bool isEqual(MyString a, MyString b)
 {
 	bool Equal;
@@ -119,3 +148,4 @@ bool isEqual(MyString a, MyString b)
 
 	return Equal;
 }
+
