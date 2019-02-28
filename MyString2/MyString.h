@@ -7,7 +7,7 @@ private:
 
 public:
 	MyString();
-	MyString(char * s);
+	MyString(const char * s);
 	MyString(MyString& other);
 	~MyString();
 	MyString operator=(const MyString& other);
@@ -16,3 +16,5 @@ public:
 	char* getStr() const;
 
 };
+
+ostream &operator<<(ostream& , const MyString&);

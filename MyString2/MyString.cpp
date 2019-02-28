@@ -12,10 +12,9 @@ MyString::MyString()
 }
 
 //char* constructor
-MyString::MyString(char * s)
+MyString::MyString(const char * s)
 {
 	cout << "The char* constructor was called: " << s << endl;
-
 
 	str = new char[strlen(s) + 1];
 	strcpy_s(str, strlen(s) + 1, s);
