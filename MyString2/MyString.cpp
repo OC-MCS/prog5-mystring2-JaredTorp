@@ -5,13 +5,21 @@
 
 using namespace std; //only for testing functions
 
-//default constructor
+//======================================================
+// function name: MyString::MyString()
+// parameters: none, its the default constructor
+// return type: none, its the default constructor
+//======================================================
 MyString::MyString()
 {
-	str = nullptr;
+	str = nullptr; //sets the str in a MyString to nullptr
 }
 
-//char* constructor
+//======================================================
+// function name: MyString::MyString(const char * s)
+// parameters: const char * s, we pass it the pointer to a char to initilize the MyString
+// return type: none, constructor
+//======================================================
 MyString::MyString(const char * s)
 {
 	cout << "The char* constructor was called: " << s << endl;
@@ -21,7 +29,12 @@ MyString::MyString(const char * s)
 
 }
 
-//copy constructor
+//======================================================
+// function name: MyString::MyString
+// parameters: 
+// MyString& other: we pass the other MyString as a reference
+// return type: none, its a constructor
+//======================================================
 MyString::MyString(MyString& other)
 {
 
@@ -33,13 +46,18 @@ MyString::MyString(MyString& other)
 	}
 	else
 	{
+		cout << "the copy constructor nullptr is called" << endl; //when couting a nullptr, the program ends
 		str = nullptr;
 	}
 
 }
 
 
-//
+//======================================================
+// function name: MyString::~MyString
+// parameters: none, its a destructor
+// return type: none, its a destructor
+//======================================================
 MyString::~MyString()
 {
 	cout << "The destructor was called!" << endl;
@@ -47,7 +65,13 @@ MyString::~MyString()
 }
 
 
-//
+//======================================================
+// function name: MyString MyString::MyString operator=
+// parameters: 
+//(const MyString& other), we pass the other string as a constant to keep consistency 
+// and because we are not changing the other value
+// return type: *this, points to the instance of the class making the function call
+//======================================================
 MyString MyString::operator=(const MyString& other)
 {
 	if (this != &other)
@@ -60,57 +84,69 @@ MyString MyString::operator=(const MyString& other)
 	return *this;
 }
 
-//overloaded + operator
+//======================================================
+// function name: MyString MyString::MyString operator+
+// parameters: 
+//(const MyString& other), we pass the other string as a constant to keep consistency 
+// and because we are not changing the other value
+// return type: MyString, we want to return the strcat MyString
+//======================================================
 MyString MyString::operator + (const MyString &other)
 {
-	MyString tempName;
+	MyString tempName; //set a temporary MyString
 
 	
-	if (str == nullptr && other.str != nullptr)
+	if (str == nullptr && other.str != nullptr) //check to see if str has nothing in it
 	{
 		tempName.str = new char[strlen(other.str) + 1];
 		strcpy_s(tempName.str, strlen(other.str) + 1, other.str);
 		
 	}
-	else if (other.str == nullptr && str != nullptr)
+	else if (other.str == nullptr && str != nullptr) //check to see of other.str has nothing it it
 	{
 		tempName.str = new char[strlen(str) + 1];
 		strcpy_s(tempName.str, strlen(str) + 1, str);
 		
 	}
-	else if (str != nullptr && other.str != nullptr)
+	else if (str != nullptr && other.str != nullptr) //if both have something it str
 	{
 		
 
 		int fullSize;
-		int firstSize = strlen(str); //the first string s1
-		int secondSize = strlen(other.str); //isnt this the size of the address??
+		int firstSize = strlen(str); //the length of str
+		int secondSize = strlen(other.str); //the length other.str
 
 
 		fullSize = firstSize + secondSize + 2; //add the names together, including 2 because we need to insert a space and nullbyte
-		tempName.str = new char[fullSize]; //is this suppose to be a new char or a mystring?
+		tempName.str = new char[fullSize]; //dynamically allocate memory for tempname.str
 
-		strcpy_s(tempName.str, fullSize, str); //
-		strcat_s(tempName.str, fullSize, " "); //
-		strcat_s(tempName.str, fullSize, other.str); //
+		strcpy_s(tempName.str, fullSize, str); //copy the first name
+		strcat_s(tempName.str, fullSize, " "); //add a space
+		strcat_s(tempName.str, fullSize, other.str); // add the other name
 		
 	}
-	return tempName;
+	return tempName; //return the TempName, if both str and other.str have nothing, it will simply return TempName
 }
 
 
-//overloaded == operator
+//======================================================
+// function name: bool MyString::MyString operator==
+// parameters: 
+//(const MyString& other), we pass the other string as a constant to keep consistency 
+// and because we are not changing the other value
+// return type: bool, we need to check if the values of str and other,str are the same
+//======================================================
 bool MyString::operator == (const MyString &other)
 {
 	bool isEqual;
 
-	if (strcmp(str, other.str) == 0)
+	if (strcmp(str, other.str) == 0) //checks if they are the same
 	{
 		isEqual = true;
 	}
 	else
 	{
-		isEqual = false;
+		isEqual = false; //if not, returns false
 	}
 
 	return isEqual;
@@ -119,7 +155,11 @@ bool MyString::operator == (const MyString &other)
 
 
 
-//a getter c_str() that returns the internal c strig pointer as a const ptr
+//======================================================
+// function name: MyString::getstr() const
+// parameters: none
+// return type: str, we just want a function to return str
+//======================================================
 char* MyString::getStr() const
 {
 	return str;
@@ -127,13 +167,23 @@ char* MyString::getStr() const
 }
 
 
-//overloaded cout operator
+//======================================================
+// function name: ostream& operator<<
+// parameters: 
+//(ostream &strm, const MyString&obj), we pass the stream by refence
+//also pass the MyString object by reference
+// return type: return the strm, which is part of the ostream class
+//======================================================
 ostream& operator<<(ostream &strm, const MyString&obj)
 {
-	if (obj.getStr() == nullptr)
+	if (obj.getStr() == nullptr) //checking if the object is NULL
 	{
-		cout << "Hey its a nullptr" << endl;
+		cout << "Hey, this is a nullptr" << endl;
 	}
-	strm << obj.getStr();
+	else //if it is not NULL, then cout the str
+	{
+	strm << obj.getStr(); //calls to get the str
+	}
+	
 	return strm;
 }

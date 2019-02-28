@@ -5,40 +5,34 @@
 // Description: Mystring
 //=====================================================
 
-//comment the code
-//visit harbert tomorrow
-
-
 #include <iostream>
 #include "MyString.h"
 
 
 using namespace std;
 
-MyString addfunc(MyString a, MyString b);
-bool isEqual(MyString a, MyString b);
-ostream& operator<<(ostream &strm, const MyString&obj);
+MyString addfunc(MyString a, MyString b); //prototype for the addition function
+bool isEqual(MyString a, MyString b); //prototype for the boolean strcmp function
+
 
 int main()
 {
 	//constructor testing
 	MyString s1;
-	cout << "after s1" << endl;
 	MyString s2("billy");
-	cout << "after s2" << endl;
 	MyString s3(s2);
-	cout << "after s3" << endl;
 	char a[] = "hello";
-	cout << "before s4" << endl;
 	MyString s4(a);
-	cout << "after s4" << endl;
 	MyString s5;
-	cout << "after s5" << endl;
-	
-	
 
+	//couting an empty string
+	cout << s1;
+	
+	cout << "Adding a MyString To an Empty MyString: " << endl;
+	//calling the addfunc to test adding an empty MyString and a MyString
 	s5 = addfunc(s1, s2);
 
+	//cout-ing the result
 	cout << s5 << endl;
 
 	cout << "Testing a Mystring to equal itself and then cout-ing the result" << endl;
@@ -63,15 +57,15 @@ int main()
 	cout << s1 << " " << s2 << endl;
 
 
-	cout << "before assinging s1 and s2 to s3's value: " << endl;
-	cout << s1 << " " << s2 << " " << s3 << endl;
+	cout << "before assinging s1 and s2 to s4's value: " << endl;
+	cout << s1 << " " << s2 << " " << s4 << endl;
 	
 	//assigning the values
-	s1 = s2 = s3;
+	s1 = s2 = s4;
 
 
 	//couting the values
-	cout << s1 << " " << s2 << " " << s3 << endl;
+	cout << s1 << " " << s2 << " " << s4 << endl;
 
 	
 
@@ -100,6 +94,7 @@ int main()
 		cout << "These two MyStrings are not the same!" << endl;
 	}
 
+
 	//setting s1 to my first name
 	s1 = "Jared";
 	//setting s2 to my last name
@@ -118,21 +113,32 @@ int main()
 
 }
 
-//adding func
+//======================================================
+// function name: addfunc
+// parameters: 
+//MyString a: we pass it the first MyString
+//MyString b: we pass it the second MyString
+// return type: MyString, we want a whole new MyString after adding a and b
+//======================================================
 MyString addfunc(MyString a, MyString b)
 {
-	cout << "Beginning of addfunc" << endl;
 	MyString temp;
 
 	temp = a + b;
-	cout << "Before return in addfunc" << endl;
+	
 
 	return temp;
 
 }
 
 
-
+//======================================================
+// function name: isEqual
+// parameters: 
+//MyString a: we pass it the first MyString
+//MyString b: we pass it the second MyString
+// return type: bool, we want to knwo whether or not a and b are the same MyString
+//======================================================
 bool isEqual(MyString a, MyString b)
 {
 	bool Equal;
