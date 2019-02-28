@@ -10,7 +10,7 @@ class MyString
 private:
 	char* str;
 
-public:
+public: 
 	MyString();
 	MyString(const char * s);
 	MyString(MyString& other);
