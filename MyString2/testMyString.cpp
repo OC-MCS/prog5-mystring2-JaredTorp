@@ -91,7 +91,7 @@ int main()
 
 }
 
-
+//adding func
 MyString addfunc(MyString a, MyString b)
 {
 	MyString temp;
@@ -102,6 +102,8 @@ MyString addfunc(MyString a, MyString b)
 
 }
 
+
+//bool true func
 bool isEqual(MyString a, MyString b)
 {
 	bool Equal;
