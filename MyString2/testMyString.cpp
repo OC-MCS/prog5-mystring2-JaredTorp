@@ -13,7 +13,7 @@ using namespace std;
 
 MyString addfunc(MyString a, MyString b); //prototype for the addition function
 bool isEqual(MyString a, MyString b); //prototype for the boolean strcmp function
-
+ 
 
 int main()
 {

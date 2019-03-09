@@ -14,7 +14,7 @@ MyString::MyString()
 {
 	str = nullptr; //sets the str in a MyString to nullptr
 }
-
+ 
 //======================================================
 // function name: MyString::MyString(const char * s)
 // parameters: const char * s, we pass it the pointer to a char to initilize the MyString
